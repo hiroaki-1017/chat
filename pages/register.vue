@@ -56,7 +56,7 @@ import { mapMutations } from 'vuex'
 
 
 export default {
-  middleware: ['checkRegister'],
+  // middleware: ['checkRegister'],
   data(){
     return {
       form: {
