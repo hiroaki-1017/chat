@@ -1,9 +1,9 @@
 export default {
   target: "static",
+  mode: "spa",
   /*
    ** Headers of the page
    */
-  ssr: false,
   head: {
     title: process.env.npm_package_name || "",
     meta: [
