@@ -32,48 +32,48 @@
   </div>
 </template>
 <script>
-import { mapGetters } from 'vuex'
-import ModalBase from '~/components/ModalBase'
-import CreateRoomModal from '~/components/CreateRoomModal'
+import { mapGetters } from "vuex";
+import ModalBase from "@/components/ModalBase";
+import CreateRoomModal from "@/components/CreateRoomModal";
 
 export default {
-  middleware: ['checkAuth'],
+  middleware: ["checkAuth"],
   components: {
     ModalBase,
-    CreateRoomModal
+    CreateRoomModal,
   },
 
   data() {
     return {
       isCreateMode: false,
-      unsubscribe: null
-    }
+      unsubscribe: null,
+    };
   },
   computed: {
-    ...mapGetters('rooms', ['rooms'])
+    ...mapGetters("rooms", ["rooms"]),
   },
-  async asyncData({ store }){
-    const unsubscribe = await store.dispatch('rooms/subscribe')
+  async asyncData({ store }) {
+    const unsubscribe = await store.dispatch("rooms/subscribe");
     return {
-      unsubscribe
-    }
+      unsubscribe,
+    };
   },
-  destroyed(){
-    this.$store.dispatch('rooms/clear')
-    if (this.unsubscribe) this.unsubscribe()
+  destroyed() {
+    this.$store.dispatch("rooms/clear");
+    if (this.unsubscribe) this.unsubscribe();
   },
   methods: {
-    moveToRoomPage(roomId){
-      this.$router.push(`/rooms/${roomId}`)
+    moveToRoomPage(roomId) {
+      this.$router.push(`/rooms/${roomId}`);
     },
     openModal() {
-      this.isCreateMode = true
+      this.isCreateMode = true;
     },
     closeModal() {
-      this.isCreateMode = false
-    }
-  }
-}
+      this.isCreateMode = false;
+    },
+  },
+};
 </script>
 <style scoped>
 .create-btn {
